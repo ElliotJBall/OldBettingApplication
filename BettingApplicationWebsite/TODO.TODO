@@ -1,0 +1,19 @@
+BettingApplicationWebsite:
+    ☐ Football Team Input:
+        ✔ Add auto complete functionality to the two search boxes - @done(18-01-27 12:22)
+            ✔ Need to modify the API to provide a way to gather all the unique FootballTeam names from the database and then add them to a dataset for the inputs @low     ☐ Add new matches @done(18-01-27 12:22)
+        ✔ Display the matches that have been gathered from the uploaded CSV file @done(18-01-15 20:33)
+        ✔ Validate user input @done(18-01-27 17:42)
+            ✔ Check user input against team names array to ensure FootballTeams are valid @done(18-01-27 17:42)
+                ✔ Automatically capitialise the first letter of two FootballTeams that have been entered @done(18-01-27 17:42)
+        ✔ Check a season has been selected @done(18-01-27 17:42)
+    ☐ Pass the data to the API to be inserted into the database
+        ☐ Create a JSON list of the football matches to be passed to the API.
+    ✔ Add a small notification of when and what the last database change was (Add to the right hand side of the header) @done(18-01-28 13:31)
+    ☐ Provide a list of the top 3 most likely results in a format easily sendable over text (Think when sending messages to freinds)
+        ☐ Implement a basket like system where you can add / remove upcoming FootballMatches
+        ✔ Format the list in a way that is easily sendable over text @done(18-01-31 22:36)
+        ✔ Add a new Component / Page to display the current list @done(18-01-31 22:36)
+        ✔ Fix indentation thingy / putting a line break in between different Football Matches @done(18-02-01 21:00)
+    ☐ Make use of the badges to give football teams different badges depending on different circumstances (Hot streak, losing streak...)
+    ☐ Restrict the attacking/defending strength search to only use goals scored/conceded from the selected seasons 

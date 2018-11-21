@@ -1,0 +1,17 @@
+input.footballTeamInput {
+    text-transform: capitalize;
+}
+
+.fade-out {
+    animation: fadeOut 1s;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}

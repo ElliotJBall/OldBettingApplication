@@ -1,0 +1,129 @@
+<br>
+<div class="container" id="footballStatsDiv"> <!-- TODO: Need to find a way to make this fit the page at all different resolutions -->
+      <div class="jumbotron">
+            <h1 class="display-5" style="float: left;">Team selection:</h1>
+            <button type="button" style="float: right;" class="btn btn-outline-info" (click)="this.addToTextMessageList()"><i class="fas fa-plus-square"></i> Add </button>
+            <p style="padding-bottom: 30px;"> </p>
+            <hr class="my-4">
+    <div class="row">
+      <!-- Left hand column -->
+            <div class="col-sm-6">
+      
+            </div>
+      
+            <!-- Right hand column -->
+            <div class="col-sm-6" style="text-align: right">
+                
+                <br>
+                <br>
+            </div>
+        <!-- Left hand column -->
+        <div class="col-sm-6" style="text-align: center">
+
+              <h1> {{this._matchService.homeTeam.teamName}}</h1>
+  
+              <br> 
+  
+              <p> Recent Form:</p>
+  
+              <!-- Recent form table to display the Form for the most recent five matches -->
+              <table class="table table-bordered"> <tr> <td *ngFor="let value of this._matchService.homeTeam.recentTeamsForm"> {{value}} </td> </tr> </table>
+        </div>
+  
+        <!-- Right hand column -->
+        <div class="col-sm-6" style="text-align: center">
+              <h1> {{this._matchService.awayTeam.teamName}}</h1>
+  
+              <br> 
+  
+              <p> Recent Form:</p>
+  
+              <!-- Recent form table to display the Form for the most recent five matches -->
+              <table class="table table-bordered"> <tr> <td *ngFor="let value of this._matchService.awayTeam.recentTeamsForm"> {{value}} </td> </tr> </table>
+        </div>
+  
+        <div class="col-sm-12"> <hr /> </div>
+  
+        <!-- Head to head form table to display the Form for all matches played between the two teams -->
+        <!-- TODO: Find alternative way to display this, current its overflowing off the page -->
+        <!-- <div class="col-lg-12">
+              <p> Head to Head Form:</p>
+              <table class="table table-bordered"> <tr> <td *ngFor="let value of this.homeTeam.headToHeadTeamsForm"> {{value}} </td> </tr> </table>
+        </div> -->
+  
+      <div class="col-sm-12" style="margin-bottom: 10px;">
+            <!-- TODO: Fix this to make use of angular functionality or find alternative approach -->
+            <!-- Meant to be similar to the bootstrap Pill however the functionality currently doesnt work correctly -->
+            <button type="button" class="btn btn-outline-info" (click)="enableFormulaNav('poissonDistributionFormula')">Poisson Distribution Forumla</button>
+            <button type="button" class="btn btn-outline-info" (click)="enableFormulaNav('kellyCriterionFormula')">Kelly Criterion Forumla</button>
+      </div>
+
+      <div class="col-sm-12">
+            <div class="tab-content" style="text-align: center">
+                  <div id="poissonDistributionFormula">
+                        <p> Poisson Distribution Formula: </p>
+                        <table class="table table-secondary table-hover table-bordered">
+                              <thead>
+                                    <tr>
+                                          <th style="text-align: center"> # </th>
+                                          <th style="text-align: center"> 0 </th>
+                                          <th style="text-align: center"> 1 </th>
+                                          <th style="text-align: center"> 2 </th>
+                                          <th style="text-align: center"> 3 </th>
+                                          <th style="text-align: center"> 4 </th>
+                                          <th style="text-align: center"> 5 </th>
+                                    </tr>
+                              </thead>
+                        <tbody style="text-align: center">
+                              <tr class="table table-bordered" *ngFor="let item of this._matchService.poissonDistribution; let i = index">
+                                    <td style="font-weight: bold"> {{i}} </td>
+                                    <td *ngFor="let value of item; let j = index" title="{{this._matchService.homeTeam.teamName}} {{j}} : {{i}} {{this._matchService.awayTeam.teamName}}"> {{this._matchService.poissonDistribution[j][i]}}% </td>
+                              </tr>
+                        </tbody>
+                  </table>
+            </div>
+            <div id="kellyCriterionFormula" style="display: none;">
+                  <p> Kelly Criterion Formula: </p>
+                  <table class="table table-bordered table-hover">
+                        <thead>
+                              <tr>
+                                    <th style="text-align: center"> # </th>
+                                    <th style="text-align: center"> 0 </th>
+                                    <th style="text-align: center"> 1 </th>
+                                    <th style="text-align: center"> 2 </th>
+                                    <th style="text-align: center"> 3 </th>
+                                    <th style="text-align: center"> 4 </th>
+                                    <th style="text-align: center"> 5 </th>
+                              </tr>
+                        </thead>
+                        <tbody style="text-align: center">
+                              <tr class="table table-bordered" *ngFor="let item of this._matchService.kellyCriterion; let i = index">
+                                    <td style="font-weight: bold"> {{i}} </td>
+                                    <td *ngFor="let value of item; let j = index" title="{{this._matchService.homeTeam.teamName}} {{j}} : {{this._matchService.awayTeam.teamName}} {{i}}"> {{this._matchService.kellyCriterion[j][i]}}% </td>
+                              </tr>
+                        </tbody>
+                  </table>
+            </div>
+      </div>
+      
+      <div class="col-sm-12"> </div>
+
+              <div class="col-sm-12" style="text-align: center"> 
+                    <p> Select an option to update the chart:</p>
+                    <form>
+                          <label class="radio-inline"> <input type="radio" name="optradio" checked (click)="getHeadToHeadChartDataToUse('headToHeadFormAverageGoalsScored')">Average Goals Scored </label>
+                          <label class="radio-inline"> <input type="radio" name="optradio" (click)="getHeadToHeadChartDataToUse('headToHeadShotsOnTarget')">Shots On Target </label>
+                          <label class="radio-inline"> <input type="radio" name="optradio" (click)="getHeadToHeadChartDataToUse('headToHeadTotalShots')">Total Shots </label>
+                          <label class="radio-inline"> <input type="radio" name="optradio" (click)="getHeadToHeadChartDataToUse('headToHeadAverageYellowCards')">Average Yellow Cards  </label>
+                          <label class="radio-inline"> <input type="radio" name="optradio" (click)="getHeadToHeadChartDataToUse('headToHeadAverageRedCards')">Average Red Cards </label>
+                          <label class="radio-inline"> <input type="radio" name="optradio" (click)="getHeadToHeadChartDataToUse('headToHeadAverageCorners')">Average Corners </label>
+                    </form>
+                          
+                    <canvas id="headToHeadChart" width="600" height="400"> </canvas> 
+              </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.rawgit.com/download/glyphicons/0.1.0/glyphicons.js"></script>

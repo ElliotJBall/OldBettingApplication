@@ -1,0 +1,30 @@
+
+<div id="container" style="text-align: center"> 
+  <br>
+  <div class="row">
+    <div class="col-sm-3">
+      
+    </div>
+
+    <div class="col-sm-6">
+        <div class="card border-primary mb-3">
+            <h3 class="card-header">Selected Matches:</h3>
+            <div class="card-body text-primary">
+              <div *ngFor="let match of this._matchInfoToTextMessageService.matchesTextMessageFormat; let i=index">
+                <p> 
+                  {{match.homeTeamName}} - {{match.awayTeamName}}
+                  <li> {{match.topResults[0].homeTeamScore}} - {{match.topResults[0].awayTeamScore}} ({{match.topResults[0].probability}}%) </li>
+                  <li> {{match.topResults[1].homeTeamScore}} - {{match.topResults[1].awayTeamScore}} ({{match.topResults[1].probability}}%) </li>
+                  <li> {{match.topResults[2].homeTeamScore}} - {{match.topResults[2].awayTeamScore}} ({{match.topResults[2].probability}}%) </li>
+                </p>
+                  <hr />
+              </div>
+            </div>
+          </div>
+    </div>
+
+    <div class="col-sm-3">
+    
+    </div>
+  </div>
+</div>

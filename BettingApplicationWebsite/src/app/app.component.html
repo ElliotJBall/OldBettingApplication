@@ -1,0 +1,17 @@
+<!-- NavBar at the top of the screen -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <div class="navbar-header">
+            <a class="navbar-brand" routerLink="/">Football</a>
+            </div>
+            <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link" routerLink="/" routerLinkActive="active current">Home</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/addNewMatches" routerLinkActive="active">Add New Matches</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/matchesTextMessage" routerLinkActive="active">Matches to Text</a></li>
+            </ul>
+        </div>
+</nav>
+
+<!-- app-match is used to gather the two teams inputted by the user and to display any information about them if there is any present in the database -->
+<!-- app-display-football-stats is used to display all the statisical information surrounding the two selected Football teams -->
+<router-outlet> </router-outlet>

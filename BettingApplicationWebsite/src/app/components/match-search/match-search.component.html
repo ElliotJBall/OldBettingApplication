@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="page-header">
+        <br>
+        <br>
+    </div>
+</div>
+<div class="container"> 
+    <div class="jumbotron">
+        <h1 class="display-5">Team selection:</h1>
+        <hr class="my-4">
+        <div class="row">
+            <div class="col-sm-5">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Home</span>
+                    </div>
+
+                    <input class="form-control footballTeamInput" type="text" list="footballTeamList" id="homeTeam" #homeTeam placeholder="Home Team" aria-describedby="sizing-addon2" value="Arsenal">
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <!-- Intentionally left blank to porivde some empty space between the home and away text boxes -->
+            </div>
+            <div class="col-sm-5">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Away</span>
+                    </div>
+
+                    <input class="form-control footballTeamInput" type="text" list="footballTeamList" id="awayTeam" #awayTeam placeholder="Away Team" aria-describedby="sizing-addon2" value="Everton">
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <form> 
+            <div class="row">
+                <div class="col-lg-12">
+                        <div class="form-group" style="text-align: center">
+                            <label *ngFor="let season of allSeasons"> 
+                                <label class="form-check-label"> <input type="checkbox" (click)="this._matchService.addCheckboxSeason(season)" value="{{season}}" id="{{season}}" />{{season}} </label> 
+                            </label>
+                        </div>
+                </div>
+            </div>
+        
+            <!-- Bootstrap row for the button to calculate football information -->
+            <div class="row">
+                <div class="col-sm-4">
+                    <!-- Intentionally left blank to porivde some empty space on the left hand side of the button -->
+                </div>
+                <div class="col-sm-4" style="text-align: center">
+                    <button type="button"class="btn btn-info" (click)="this.validateUserInput(homeTeam.value, awayTeam.value)"> Calculate </button>
+
+                    <br />
+                    <br /> 
+
+                    <div class="alert alert-dismissible alert-danger" role="alert" id="userValidationErrorBox" style="display: none"> </div>
+                </div>
+                <div class="col-sm-4">
+                    <!-- Intentionally left blank to porivde some empty space on the right hand side of the button -->
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+    <br>
+
+    <!-- Different Checkboxes for all the different seasons available, May want to find a more elegant solution (Bootstrap Collapisble / Popup upon upon searching teams?) -->
+
+
+<!-- Datalist for all of the football team names -->
+<datalist id="footballTeamList">
+    <option *ngFor="let value of this.allFootballTeams" value={{value}}> </option>
+</datalist>
